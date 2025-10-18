@@ -21,8 +21,6 @@ import { AuthModule } from './auth/auth.module';
     StudentModule,
     SeedModule,
     AuthModule,
-    //SeedModule,
-    //AuthModule,
   ],
   controllers: [],
   providers: [],
