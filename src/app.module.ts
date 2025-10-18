@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { StudentModule } from './student/student.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SeedModule } from './seed/seed.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true, // solo en ambientes bajos, en produccion se debe hacer migraciones
     }),
     StudentModule,
+    SeedModule,
+    AuthModule,
     //SeedModule,
     //AuthModule,
   ],
