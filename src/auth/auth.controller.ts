@@ -11,6 +11,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { UserRoleGuard } from './guards/user-role/user-role.guard';
+import { Auth } from './decorators/auth.decorator';
+import { ValidRoles } from './enums/roles.enum';
 
 @Controller('auth')
 export class AuthController {
@@ -28,10 +30,8 @@ export class AuthController {
 
   @Get('private')
   @UseGuards(AuthGuard(), UserRoleGuard)
-  @SetMetadata('roles', ['admin', 'teacher'])
+  @Auth(ValidRoles.admin)
   testPrivate() {
-    //@RawHeaders() headers: Headers //@GetUser() user: User
-    //console.log("🚀 ~ :29 ~ AuthController ~ testPrivate ~ user:", user)
     return {
       ok: true,
       message: 'logged in',
