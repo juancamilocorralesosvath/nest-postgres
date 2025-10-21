@@ -7,12 +7,23 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Grade } from './grade.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Student {
+
+  @ApiProperty({
+    example: "jeidjeidjeidjeidjed",
+    description: "student id",
+    uniqueItems: true
+  })
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty({
+    example: "Gustavo Gonzalez",
+    description: "student name",
+  })
   @Column('text')
   name: string;
 

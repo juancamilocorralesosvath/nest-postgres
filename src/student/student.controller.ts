@@ -12,12 +12,16 @@ import { StudentService } from './student.service';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { PaginationDto } from './dto/pagination.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
+import { ApiResponse } from '@nestjs/swagger';
+import { Student } from './entities/student.entity';
 
 @Controller('student')
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Post()
+  @ApiResponse({status: 201, description: "student was created", type: Student})
+  @ApiResponse({status: 400, description: 'bad request'})
   create(@Body() createStudentDto: CreateStudentDto) {
     return this.studentService.create(createStudentDto);
   }
